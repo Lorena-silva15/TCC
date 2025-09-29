@@ -101,60 +101,41 @@
 <body>
 
   <div class="pai">
-    <div id="overlay" class="overlay"></div>
+  <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+</div>
 
-    <nav class="row">
-      <div class="col-8">
-        <a class="navbar-brand text-white">Navbar</a>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
-      </div>
-      <div class="col-4">
-        <button id="toggleCanvas">Toggle canvas</button>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2">
+  <span class="input-group-text" id="basic-addon2">@example.com</span>
+</div>
 
-        <!-- Canvas container -->
-        <div class="canvas-container" id="canvasContainer">
-          <div class="canvas-card" id="canvas1">1 canvas</div>
-          <div class="canvas-card" id="canvas2">2 canvas</div>
-          <div class="canvas-card" id="canvas3">3 canvas</div>
-        </div>
-      </div>
-    </nav>
+<div class="mb-3">
+  <label for="basic-url" class="form-label">Your vanity URL</label>
+  <div class="input-group">
+    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+  </div>
+  <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
+</div>
 
-    <section class="container text-center mt-4">
-      <div class="row">
-        <div class="col-sm-8">
-          <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="img/img.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/img2.png" class="d-block w-100" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="img/img3.png" class="d-block w-100" alt="...">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-        <div class="col-sm-4">col-sm-4</div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-sm">col-sm</div>
-        <div class="col-sm">col-sm</div>
-        <div class="col-sm">col-sm</div>
-      </div>
+<div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <span class="input-group-text">.00</span>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
+</div>
+
+<div class="input-group">
+  <span class="input-group-text">With textarea</span>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
     </section>
   </div>
 
@@ -162,51 +143,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
-  <!-- JS para os canvas -->
-  <script>
-    const toggleBtn = document.getElementById('toggleCanvas');
-    const overlay = document.getElementById('overlay');
-    const cards = ['canvas1', 'canvas2', 'canvas3'];
-    const canvasContainer = document.getElementById('canvasContainer');
-    let isOpen = false;
-
-    toggleBtn.addEventListener('click', () => {
-      if (isOpen) return;
-
-      isOpen = true;
-      overlay.classList.add('active');
-      canvasContainer.style.right = '20px';
-
-      let delay = 0;
-      cards.forEach((id) => {
-        setTimeout(() => {
-          const el = document.getElementById(id);
-          el.classList.add('show');
-          el.classList.remove('hide');
-        }, delay);
-        delay += 500;
-      });
-    });
-
-    overlay.addEventListener('click', () => {
-      let delay = 0;
-
-      cards.forEach((id) => {
-        setTimeout(() => {
-          const el = document.getElementById(id);
-          el.classList.remove('show');
-          el.classList.add('hide');
-        }, delay);
-        delay += 500;
-      });
-
-      setTimeout(() => {
-        canvasContainer.style.right = '-300px';
-        overlay.classList.remove('active');
-        isOpen = false;
-      }, delay + 300);
-    });
-  </script>
+  
 
 </body>
 </html>
