@@ -199,13 +199,28 @@
     .stackedForm button:focus::after {
       background: var(--form-btn-active-color);
     }
-    .stackedForm .bt2 :after,
-       .stackedForm .bt2 :before{
-        background-color: white
-       }
+  
     .stackedForm button:active {
       transform: translateX(0px);
     }
+
+    .google {
+  background-color: white !important;
+  color: black !important;
+}
+.google::before,
+.google::after {
+  background-color: white !important;
+}
+
+  .face {
+  background-color: blue !important;
+  color: black ;
+}
+.face::before,
+.face::after {
+  background-color: blue !important;
+}
    
   </style>
 </head>
@@ -244,8 +259,8 @@
             <ul class="wrapper">
               
               
-               <button style="--i:2;  background-color:white" ><span>Submit</span></button> <br>
-              <button style="--i:1;" class='bt2'><span>Submit</span></button>
+               <button style="--i:2; "  class='google'><span>Submit</span></button> <br>
+              <button style="--i:1;"  class='face' ><span>Submit</span></button>
             </ul>
           </form>
     </div>
