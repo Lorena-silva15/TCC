@@ -50,11 +50,11 @@
  
 
     .stackedForm {
-      --form-btn-color-3: #d8f7de;
-      --form-btn-color-2: #c2f3ca;
-      --form-btn-color-1: #9beb98;
+      --form-btn-color-3: #f5d8f7ff;
+      --form-btn-color-2: #f3c2f3ff;
+      --form-btn-color-1: #eb98e7ff;
       --form-btn-color: #ac51acff;
-      --form-btn-active-color: #21f438;
+      --form-btn-active-color: #7c0b3aff;
       --form-rotation: rotate3d(0, 1, 0, 180deg);
       --form-text-padding-left: 10px;
     }
@@ -210,17 +210,23 @@
 }
 .google::before,
 .google::after {
-  background-color: white !important;
+  background-color: #f8f9fa !important;
 }
 
   .face {
-  background-color: blue !important;
+  background-color: #3b5998 !important;
   color: black ;
 }
 .face::before,
 .face::after {
-  background-color: blue !important;
+  background-color: #3b5998 !important;
 }
+
+img{
+  width: 16%;
+  transform: scaleX(-1);
+}
+
    
   </style>
 </head>
@@ -231,22 +237,23 @@
       <form class="stackedForm">
         <ul class="wrapper">
           <li style="--i:4;">
-            <input required="" placeholder="Name" type="text" class="input" />
+            <input required="" placeholder="Nome" type="text" class="input" />
           </li>
+       
           <li style="--i:3;">
-            <input
-              name="phone"
-              required=""
-              placeholder="Phone number"
-              class="input"
-            />
-          </li>
-          <li style="--i:2;">
             <input
               name="email"
               required=""
               placeholder="E-mail"
               type="email"
+              class="input"
+            />
+          </li>
+             <li style="--i:2;">
+            <input
+              name="senha"
+              required=""
+              placeholder="senha  "
               class="input"
             />
           </li>
@@ -259,8 +266,8 @@
             <ul class="wrapper">
               
               
-               <button style="--i:2; "  class='google'><span>Submit</span></button> <br>
-              <button style="--i:1;"  class='face' ><span>Submit</span></button>
+               <button style="--i:2; "  class='google'><img src="img/google.png" alt="" ></button> <br>
+              <button style="--i:1;"  class='face' ><img src="img/face.png" alt="" ></button>
             </ul>
           </form>
     </div>
