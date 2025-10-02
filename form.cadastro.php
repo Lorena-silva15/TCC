@@ -9,6 +9,9 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <style>
+    .divs{
+      margin-top:30%;
+    }
     .col-8 {
       background-color: purple;
       width: 85%;
@@ -24,16 +27,17 @@
     }
 
     .pai {
-      width: 55%;
+      max-width:200px;
       text-align: center;
+      height:5000px;
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
       margin-top:6%
     }
 
-    body {
-      background-color: #f9f9f9;
+    body {  
+      background-color: #de89ffff;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 50px 0;
@@ -43,40 +47,211 @@
     a{
         text-decoration:none
     }
-  
+ 
+
+    .stackedForm {
+      --form-btn-color-3: #d8f7de;
+      --form-btn-color-2: #c2f3ca;
+      --form-btn-color-1: #9beb98;
+      --form-btn-color: #ac51acff;
+      --form-btn-active-color: #21f438;
+      --form-rotation: rotate3d(0, 1, 0, 180deg);
+      --form-text-padding-left: 10px;
+    }
+
+    .stackedForm {
+      transform: var(--form-rotation);
+    }
+
+    .stackedForm .input,
+    .stackedForm button {
+      width: 100%;
+      height: 40px;
+      position: relative;
+      padding: 10px;
+      border: 0.1px solid var(--form-btn-active-color);
+    }
+
+    .stackedForm button {
+      background: var(--form-btn-color);
+      border: none;
+    }
+
+    .stackedForm button span {
+      display: block;
+      transform: var(--form-rotation);
+    }
+
+    .stackedForm .wrapper {
+      position: relative;
+      transform: skewY(-14deg);
+    }
+
+    .stackedForm .wrapper li,
+    .stackedForm button {
+      position: relative;
+      list-style: none;
+      width: 200px;
+      z-index: var(--i);
+      transition: 0.3s;
+      color: white;
+    }
+
+    .stackedForm .wrapper li::before,
+    .stackedForm button::before {
+      position: absolute;
+      content: "";
+      background: var(--form-btn-color);
+      top: 0;
+      left: -40px;
+      width: 40px;
+      height: 40px;
+      transform-origin: right;
+      transform: skewY(45deg);
+      transition: 0.3s;
+    }
+
+    .stackedForm .wrapper li::after,
+    .stackedForm button::after {
+      position: absolute;
+      content: "";
+      background: var(--form-btn-color);
+      width: 200px;
+      height: 40px;
+      top: -40px;
+      left: 0;
+      transform-origin: bottom;
+      transform: skewX(45deg);
+      transition: 0.3s;
+    }
+
+    .stackedForm .wrapper li:nth-child(1)::after,
+    .stackedForm .wrapper li:nth-child(1)::before {
+      background-color: var(--form-btn-color-3);
+    }
+
+    .stackedForm .wrapper li:nth-child(2)::after,
+    .stackedForm .wrapper li:nth-child(2)::before {
+      background-color: var(--form-btn-color-2);
+    }
+
+    .stackedForm .wrapper li:nth-child(3)::after,
+    .stackedForm .wrapper li:nth-child(3)::before {
+      background-color: var(--form-btn-color-1);
+    }
+     .stackedForm .wrapper li:nth-child(4)::after,
+    .stackedForm .wrapper li:nth-child(5)::before {
+      background-color:white
+    }
+    .stackedForm li .input {
+      outline: none;
+      border: none;
+      padding: 0;
+      padding-left: var(--form-text-padding-left);
+      width: calc(100%);
+      color: black;
+      transform: var(--form-rotation);
+    }
+
+    .stackedForm li .input::placeholder {
+      color: black;
+    }
+
+    .stackedForm li:nth-child(1) .input {
+      background: var(--form-btn-color-3);
+    }
+
+    .stackedForm li:nth-child(2) .input {
+      background: var(--form-btn-color-2);
+    }
+
+    .stackedForm li:nth-child(3) .input {
+      background: var(--form-btn-color-1);
+    }
+
+    .stackedForm li:nth-child(1) .input:focus {
+      outline: none;
+      border: 0px solid var(--form-btn-color-3);
+    }
+
+    .stackedForm li:nth-child(2) .input:focus {
+      outline: none;
+      border: 0px solid var(--form-btn-color-2);
+    }
+
+    li:nth-child(3) .input:focus {
+      outline: none;
+      border: 0px solid var(--form-btn-color-1);
+    }
+
+    .stackedForm .wrapper li:hover,
+    .stackedForm button:hover,
+    .stackedForm .wrapper li:has(input:focus),
+    .stackedForm button:focus {
+      transform: translateX(-20px);
+    }
+
+    .stackedForm button:hover,
+    .stackedForm button:hover::before,
+    .stackedForm button:hover::after,
+    .stackedForm button:focus,
+    .stackedForm button:focus::before,
+    .stackedForm button:focus::after {
+      background: var(--form-btn-active-color);
+    }
+    .stackedForm .bt2 :after,
+       .stackedForm .bt2 :before{
+        background-color: white
+       }
+    .stackedForm button:active {
+      transform: translateX(0px);
+    }
+   
   </style>
 </head>
 <body>
 
   <div class="pai">
 
-    <form action="cadastro.php" method="get">
-            <div class="input-group mb-3">
-            
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
-                
-            </div>  
+      <form class="stackedForm">
+        <ul class="wrapper">
+          <li style="--i:4;">
+            <input required="" placeholder="Name" type="text" class="input" />
+          </li>
+          <li style="--i:3;">
+            <input
+              name="phone"
+              required=""
+              placeholder="Phone number"
+              class="input"
+            />
+          </li>
+          <li style="--i:2;">
+            <input
+              name="email"
+              required=""
+              placeholder="E-mail"
+              type="email"
+              class="input"
+            />
+          </li>
+          
+          <button style="--i:1;"><span>Submit</span></button>
+        </ul>
+      </form>
+    <div class='divs'>
+       <form class="stackedForm">
+            <ul class="wrapper">
+              
+              
+               <button style="--i:2;  background-color:white" ><span>Submit</span></button> <br>
+              <button style="--i:1;" class='bt2'><span>Submit</span></button>
+            </ul>
+          </form>
+    </div>
+      
 
-                
-            <div class="input-group mb-3">   
 
-                <input type="email" class="form-control" placeholder="E-mail" aria-label="Email" aria-describedby="basic-addon1" required>
-                
-            </div>
-
-
-            <div class="input-group mb-3">   
-                <input type="password" class="form-control" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1" required min='8'>
-                
-            
-            </div>  
-
-            <div class="input-group ">
-                <input type="submit" class="form-control" placeholder="Confrmar" aria-label="submit" aria-describedby="basic-addon1">
-                
-                <button><a href="#">ja tem uma conta? Faça login</a></button>
-            </div>
-    </form>
            
 
 

@@ -1,149 +1,160 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Canvas com Slide</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    .col-8 {
-      background-color: purple;
-      width: 85%;
-      padding: 2.3%;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .col-4 {
-      background-color: #222;
-      width: 15%;
-      padding: 2.3%;
-    }
-
+    
     .pai {
-      width: 95%;
+      width: 50%;
       text-align: center;
-      justify-content: center;
-      margin-left: auto;
-      margin-right: auto;
+      height:500px;
+      margin-left: 20px;
+      margin-right: 20px;
       margin-top: 5px;
+    }
+
+        /* From Uiverse.io by andrew-demchenk0 */ 
+    /* you can choose any color you want. don't be afraid to experiment  */
+
+    .input, button {
+      width: 90%;
+      height: 40px;
       position: relative;
+      padding: 10px;
+      border: 0.1px solid #575cb5;
     }
 
-    body {
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 50px 0;
-    }
-
-    #toggleCanvas {
-      background-color: #0077b6;
-      color: white;
-      font-weight: bold;
+    button {
+      background: #6d74e3;
       border: none;
-      border-radius: 10px;
-      padding: 15px 25px;
-      cursor: pointer;
-      z-index: 2;
     }
 
-    .canvas-container {
-      position: fixed;
-      top: 100px;
-      right: -300px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1051; /* acima do overlay */
+    .wrapper {
+      position: relative;
+      transform: skewY(-14deg);
     }
 
-    .canvas-card {
-      background-color: #e4aeea;
+    .wrapper li, button {
+      position: relative;
+      list-style: none;
+      width: 200px;
+      z-index: var(--i);
+      transition: 0.3s;
+      color: white;
+    }
+
+    .wrapper li::before, button::before {
+      position: absolute;
+      content: '';
+      background: #6d74e3;
+      top: 0;
+      left: -40px;
+      width: 40px;
+      height: 40px;
+      transform-origin: right;
+      transform: skewY(45deg);
+      transition: 0.3s;
+    }
+
+    .wrapper li::after, button::after {
+      position: absolute;
+      content: '';
+      background: #6d74e3;
+      width: 200px;
+      height: 40px;
+      top: -40px;
+      left: 0;
+      transform-origin: bottom;
+      transform: skewX(45deg);
+      transition: 0.3s;
+    }
+
+    .wrapper li:nth-child(1)::after, .wrapper li:nth-child(1)::before {
+      background-color: #d8daf7;
+    }
+
+    .wrapper li:nth-child(2)::after, .wrapper li:nth-child(2)::before {
+      background-color: #c2c5f3;
+    }
+
+    .wrapper li:nth-child(3)::after, .wrapper li:nth-child(3)::before {
+      background-color: #989deb;
+    }
+
+    li .input {
+      outline: none;
+      border: none;
       color: black;
-      border-radius: 15px;
-      padding: 20px 30px;
-      min-width: 200px;
-      text-align: center;
-      font-weight: bold;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: transform 0.5s ease, opacity 0.5s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .canvas-card.show {
-      opacity: 1;
-      transform: translateX(0);
+    li .input::placeholder {
+      color: black;
     }
 
-    .canvas-card.hide {
-      opacity: 0;
-      transform: translateX(100%);
+    li:nth-child(1) .input {
+      background: #d8daf7;
     }
 
-    .overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.1);
-      z-index: 1050;
+    li:nth-child(2) .input {
+      background: #c2c5f3;
     }
 
-    .overlay.active {
-      display: block;
+    li:nth-child(3) .input {
+      background: #989deb;
     }
-  </style>
+
+
+    li:nth-child(1) .input:focus {
+      outline: none;
+      border: 3.5px solid #d8daf7;
+    }
+
+    li:nth-child(2) .input:focus {
+      outline: none;
+      border: 3.5px solid #c2c5f3;
+    }
+
+    li:nth-child(3) .input:focus {
+      outline: none;
+      border: 3.5px solid #989deb;
+    }
+
+    .wrapper li:hover, button:hover {
+      transform: translateX(-20px);
+    }
+
+    button:hover, button:hover::before, button:hover::after {
+      background: #575cb5;
+    }
+
+    button:active {
+      transform: translateX(0px);
+    }
+
+
+ </style> 
 </head>
 <body>
 
-  <div class="pai">
-  <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">@</span>
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-</div>
+    <div class ='pai'>
 
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient’s username" aria-label="Recipient’s username" aria-describedby="basic-addon2">
-  <span class="input-group-text" id="basic-addon2">@example.com</span>
-</div>
 
-<div class="mb-3">
-  <label for="basic-url" class="form-label">Your vanity URL</label>
-  <div class="input-group">
-    <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-  </div>
-  <div class="form-text" id="basic-addon4">Example help text goes outside the input group.</div>
-</div>
+    
 
-<div class="input-group mb-3">
-  <span class="input-group-text">$</span>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-  <span class="input-group-text">.00</span>
-</div>
-
-<div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-  <span class="input-group-text">@</span>
-  <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-</div>
-
-<div class="input-group">
-  <span class="input-group-text">With textarea</span>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
-    </section>
-  </div>
-
-  <!-- Bootstrap Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-
+        <form class="form">
+          <ul class="wrapper">
+            
+            <li style="--i:4;"><input class="input" type="text" placeholder="Name" required=""></li>
+            <li style="--i:3;"><input class="input" placeholder="Phone number" required="" name="phone"></li>
+            <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
+            <button style="--i:1;">Submit</button>
+          </ul>
+      </form>
+    </div>
   
-
 </body>
 </html>
+
+
